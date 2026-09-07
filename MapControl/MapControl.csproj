@@ -1,33 +1,40 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>net451</TargetFrameworks>
-    <Version>1.1.0</Version>
-    <Product>System.Windows.Forms.MapControl</Product>
-    <Description>Map control for WindowsForms</Description>
-    <Copyright>© Alexander Krutov 2020-2021</Copyright>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Title>System.Windows.Forms.MapControl</Title>
-    <Summary>Map control for WindowsForms</Summary>
-    <PackageId>WinFormsMapControl</PackageId>    
-    <Authors>Alexander Krutov</Authors>
-    <Company>Alexander Krutov</Company>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/AlexanderKrutov/WinFormsMapControl</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/AlexanderKrutov/WinFormsMapControl.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>WindowsForms, MapControl, OpenStreetMap</PackageTags>
-    <AssemblyName>System.Windows.Forms.MapControl</AssemblyName>
-    <RootNamespace>System.Windows.Forms</RootNamespace>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net451|AnyCPU'">
-    <DocumentationFile>System.Windows.Forms.MapControl.xml</DocumentationFile>
-  </PropertyGroup>  
-  <ItemGroup>
-    <EmbeddedResource Include="OfflineMaps\**\*.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>  
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net481;net10.0-windows</TargetFrameworks>
+		<OutputType>Library</OutputType>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<OutputPath>bin\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
+	</PropertyGroup>
+	<PropertyGroup>
+		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+		<NoWarn>$(NoWarn);SYSLIB0011;CA1416;WFO1000;SYSLIB0014</NoWarn>
+		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="..\CommonVersionAssemblyInfo.cs">
+			<Link>Properties\CommonVersionAssemblyInfo.cs</Link>
+		</Compile>
+		<Compile Include="..\CompanyAssemblyInfo.cs">
+			<Link>Properties\CompanyAssemblyInfo.cs</Link>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="OfflineMaps\**\*.jpg" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(targetframework.startswith('net48')) ">
+		<Reference Include="System.Design" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+		<PackageReference Include="System.Resources.Extensions" Version="10.0.9" />
+	</ItemGroup>
 </Project>

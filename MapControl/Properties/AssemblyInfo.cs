@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("System.Windows.Forms.MapControl.Demo")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("System.Windows.Forms.MapControl")]
+[assembly: AssemblyDescription("Map control for WindowsForms")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("System.Windows.Forms.MapControl.Demo")]
+[assembly: AssemblyProduct("System.Windows.Forms.MapControl")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
